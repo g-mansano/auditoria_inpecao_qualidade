@@ -1,0 +1,15 @@
+# Blueprint do Render (render.com): New > Blueprint > aponte para este repositório.
+# Plano gratuito: dorme após 15 min sem acesso; a 1ª visita depois disso leva ~1 min e volta com os dados de exemplo.
+services:
+  - type: web
+    name: checklist-auditoria-demo
+    runtime: docker
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: demo
+      - key: DEMO_SENHA
+        value: demo1234
+      - key: DEMO_RESET_CRON
+        value: "0 0 4 * * *"

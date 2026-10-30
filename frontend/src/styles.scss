@@ -1,0 +1,231 @@
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+  // Leva a paleta da marca aos componentes do Material (botões, FAB, chips, toggles, barras de progresso).
+  @include mat.theme-overrides(
+    (
+      primary: #312e81,
+      on-primary: #ffffff,
+      primary-container: #e3e1f8,
+      on-primary-container: #312e81,
+      secondary-container: #f1eafe,
+      on-secondary-container: #4c1d95,
+    )
+  );
+
+  /* Identidade visual (empresa fictícia Acme Indústria) */
+  --cor-primaria: #312e81;
+  --cor-primaria-hover: #27246a;
+  --cor-primaria-clara: #eeedfb;
+  --cor-secundaria: #7c3aed;
+  --cor-secundaria-clara: #f1eafe;
+
+  /* Conformidade (C, NC, OM, NA) - Tons modernos e suaves */
+  --cor-c: #127c36;
+  --cor-c-fundo: #edfcf2;
+  --cor-c-borda: #a6f4c5;
+
+  --cor-nc: #d92d20;
+  --cor-nc-fundo: #fef3f2;
+  --cor-nc-borda: #fecdca;
+
+  --cor-om: #b54708;
+  --cor-om-fundo: #fffaeb;
+  --cor-om-borda: #fedf89;
+
+  --cor-na: #475467;
+  --cor-na-fundo: #f2f4f7;
+  --cor-na-borda: #eaecf0;
+
+  /* Superfícies e Sombras */
+  --sombra-card: 0 1px 3px rgba(15, 23, 42, 0.05), 0 4px 12px rgba(15, 23, 42, 0.03);
+  --sombra-card-hover: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --borda-card: 1px solid #e2e8f0;
+  --raio-card: 16px;
+}
+
+body {
+  color-scheme: light;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px calc(96px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+h1 {
+  font: var(--mat-sys-headline-small);
+  color: #0f172a;
+  font-weight: 700;
+  margin: 8px 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.cartao {
+  background: #ffffff;
+  border-radius: var(--raio-card);
+  border: var(--borda-card);
+  box-shadow: var(--sombra-card);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.linha {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cheio {
+  width: 100%;
+}
+
+.fab {
+  position: fixed !important;
+  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 20;
+  box-shadow: 0 4px 14px rgba(30, 41, 88, 0.35) !important;
+}
+
+.aviso {
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid transparent;
+
+  &.info {
+    background: #f0f7ff;
+    border-color: #bae0fd;
+    color: #034f8a;
+  }
+  &.atencao {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+  }
+  &.erro {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+  }
+  mat-icon {
+    flex-shrink: 0;
+  }
+  .texto {
+    flex: 1;
+    min-width: 200px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 24px;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+
+  &.C {
+    background: var(--cor-c-fundo);
+    color: var(--cor-c);
+    border-color: var(--cor-c-borda);
+  }
+  &.NC {
+    background: var(--cor-nc-fundo);
+    color: var(--cor-nc);
+    border-color: var(--cor-nc-borda);
+  }
+  &.OM {
+    background: var(--cor-om-fundo);
+    color: var(--cor-om);
+    border-color: var(--cor-om-borda);
+  }
+  &.NA {
+    background: var(--cor-na-fundo);
+    color: var(--cor-na);
+    border-color: var(--cor-na-borda);
+  }
+  &.vazio {
+    background: #ffffff;
+    color: #94a3b8;
+    border: 1px dashed #cbd5e1;
+  }
+}
+
+.mudo {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Botão "voltar" quadrado das telas internas. */
+.btn-voltar {
+  flex-shrink: 0;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  color: #475467 !important;
+}
+
+/* Impressão (Ctrl+P): some a interface; fica só o relatório da auditoria (app-relatorio-impressao). */
+@page {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  mat-toolbar,
+  .nao-imprimir,
+  .faixa-atualizacao,
+  .fab,
+  .navegacao,
+  .navegacao-fixa {
+    display: none !important;
+  }
+  main {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+.carregando {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}

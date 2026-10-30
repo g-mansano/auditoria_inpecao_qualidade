@@ -1,0 +1,22 @@
+# dados locais (H2 + anexos)
+dados/
+dados-demo/
+backend/dados/
+backend/dados-demo/
+logs/
+*.log
+
+# notas internas de desenvolvimento
+CLAUDE.md
+
+# build
+backend/target/
+frontend/dist/
+frontend/node_modules/
+frontend/.angular/
+
+# IDE
+.idea/
+*.iml
+.vscode/*
+!frontend/.vscode/

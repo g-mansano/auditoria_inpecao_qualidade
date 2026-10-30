@@ -1,0 +1,9 @@
+**/node_modules
+**/.angular
+frontend/dist
+backend/target
+backend/dados
+dados-demo
+dados-dev
+**/*.log
+.git
